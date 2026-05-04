@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrics Store Build Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .task { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .completed { background-color: #d4edda; }
+        .pending { background-color: #fff3cd; }
+    </style>
+</head>
+<body>
+    <h1>Tunsrom Fabrics Store Build Tracker</h1>
+    <h2>Phase 1: Setup (t1-t5)</h2>
+    <div class="task completed" id="t1">t1: Install Tailwind CSS</div>
+    <div class="task completed" id="t2">t2: Configure Tailwind theme</div>
+    <div class="task completed" id="t3">t3: Add Google Fonts</div>
+    <div class="task completed" id="t4">t4: Install lucide-react</div>
+    <div class="task completed" id="t5">t5: Create folder structure and dummy data</div>
+
+    <h2>Phase 2: Layout Shell (t6-t9)</h2>
+    <div class="task completed" id="t6">t6: Create TopBar component</div>
+    <div class="task completed" id="t7">t7: Create Header component</div>
+    <div class="task completed" id="t8">t8: Create basic App layout</div>
+    <div class="task completed" id="t9">t9: Test layout rendering</div>
+
+    <h2>Phase 3: Hero Section (t10-t13)</h2>
+    <div class="task completed" id="t10">t10: Create HeroSlider component</div>
+    <div class="task completed" id="t11">t11: Add auto-advance and controls</div>
+    <div class="task completed" id="t12">t12: Style hero content</div>
+    <div class="task completed" id="t13">t13: Test hero responsiveness</div>
+
+    <h2>Phase 4: Product Sections (t14-t17)</h2>
+    <div class="task completed" id="t14">t14: Create ProductCard component</div>
+    <div class="task completed" id="t15">t15: Create ShopSection with tabs</div>
+    <div class="task completed" id="t16">t16: Create WhatsNew section</div>
+    <div class="task completed" id="t17">t17: Create NewArrivals section</div>
+
+    <h2>Phase 5: Extra Sections (t18-t20)</h2>
+    <div class="task completed" id="t18">t18: Create remaining sections (FeatureBanner, ProductGallery, etc.)</div>
+    <div class="task completed" id="t19">t19: Add CartDrawer functionality</div>
+    <div class="task completed" id="t20">t20: Implement wishlist integration</div>
+
+    <h2>Phase 6: Polish (t21-t25)</h2>
+    <div class="task completed" id="t21">t21: Add animations and transitions</div>
+    <div class="task completed" id="t22">t22: Optimize for mobile</div>
+    <div class="task pending" id="t23">t23: Add loading states</div>
+    <div class="task completed" id="t24">t24: Final testing and bug fixes</div>
+    <div class="task pending" id="t25">t25: Performance optimization</div>
+
+    <script>
+        function markCompleted(taskId) {
+            const task = document.getElementById(taskId);
+            task.classList.remove('pending');
+            task.classList.add('completed');
+        }
+    </script>
+</body>
+</html>
