@@ -18,7 +18,12 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    // Vercel frontend — update this once you have your Vercel URL
+    process.env.FRONTEND_URL || 'https://tunsrom-fabrics.vercel.app',
+  ],
   credentials: true,
 }));
 app.use(express.json());
