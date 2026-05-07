@@ -6,8 +6,10 @@ import { buildSingleProductMessage } from '../config/whatsapp';
 const categoryLabels = {
   lace: 'Lace fabrics',
   jacquard: 'Jacquard fabrics',
-  wool: 'Wool materials',
   caps: 'Caps and headwear',
+  cashmere: 'Cashmere materials',
+  cofflins: 'Cofflins',
+  wool: 'Wool materials',
 };
 
 function ProductCard({ onAddToCart, onViewProduct, product }) {

@@ -1,9 +1,12 @@
 /**
  * Base API client — all fetch calls go through here.
- * The Vite proxy forwards /api/* to http://localhost:5000
+ * In development: Vite proxy forwards /api/* to http://localhost:5000
+ * In production: VITE_API_URL points directly to the Render backend
  */
 
-const BASE_URL = '/api';
+const BASE_URL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : '/api';
 
 function getAuthToken() {
   return localStorage.getItem('tunsrom-customer-token');

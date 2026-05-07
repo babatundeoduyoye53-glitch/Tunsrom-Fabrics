@@ -2,6 +2,8 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import LocationMap from './LocationMap';
 
+const WHATSAPP_NUMBER = '2348034619489';
+
 const contactDetails = [
   {
     icon: Phone,
@@ -31,7 +33,6 @@ function ContactPage({ onNavigateHome }) {
     subject: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,15 +41,27 @@ function ContactPage({ onNavigateHome }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
-    window.setTimeout(() => setSubmitted(false), 3000);
+
+    // Build a WhatsApp message from the form data
+    const text = [
+      `*New Inquiry from Tunsrom Fabrics Website*`,
+      ``,
+      `*Name:* ${formData.name}`,
+      `*Email:* ${formData.email}`,
+      formData.phone ? `*Phone:* ${formData.phone}` : null,
+      `*Subject:* ${formData.subject}`,
+      ``,
+      `*Message:*`,
+      formData.message,
+    ]
+      .filter((line) => line !== null)
+      .join('\n');
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+
+    // Reset form
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
   return (
@@ -172,15 +185,11 @@ function ContactPage({ onNavigateHome }) {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-full bg-gold px-7 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-lg shadow-gold/20 hover:bg-[#735610]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-lg shadow-green-500/20 hover:bg-[#1ebe5d]"
                 >
-                  Send Message
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.03 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.74.45 3.44 1.31 4.95L2 22l5.3-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.83 9.83 0 0 0-2.89-7Zm-7.01 15.23h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.24 8.24 0 0 1-1.27-4.37c0-4.56 3.71-8.27 8.28-8.27 2.21 0 4.29.86 5.85 2.42a8.2 8.2 0 0 1 2.42 5.85c0 4.56-3.72 8.27-8.29 8.27Z"/></svg>
+                  Send via WhatsApp
                 </button>
-                {submitted && (
-                  <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-5 py-2 text-sm font-medium text-emerald-700">
-                    Thank you! We&apos;ll reach out soon.
-                  </div>
-                )}
               </div>
             </form>
           </div>

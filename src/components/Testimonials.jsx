@@ -20,7 +20,12 @@ function Testimonials() {
 
         <div className="relative overflow-hidden rounded-[28px] bg-cream px-6 py-10 shadow-inner shadow-black/5 sm:rounded-[36px] sm:px-14 sm:py-14 lg:px-20 lg:py-16">
           <div className="mx-auto max-w-3xl text-center">
-            <img src={active.avatar} alt={active.name} className="mx-auto h-16 w-16 rounded-full border-4 border-white object-cover shadow-lg sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
+            <div
+              className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-4 border-white text-lg font-bold text-white shadow-lg sm:h-20 sm:w-20 sm:text-xl lg:h-24 lg:w-24 lg:text-2xl"
+              style={{ backgroundColor: active.color }}
+            >
+              {active.initials}
+            </div>
             <p className="mt-6 font-display text-xl leading-snug text-[#1A1208] sm:mt-8 sm:text-3xl lg:text-4xl lg:leading-snug">"{active.quote}"</p>
             <h3 className="mt-5 text-base font-semibold text-[#1A1208] sm:mt-8 sm:text-lg">{active.name}</h3>
             <p className="mt-1 text-xs uppercase tracking-[0.28em] text-[#6B6456] sm:text-sm">{active.title}</p>

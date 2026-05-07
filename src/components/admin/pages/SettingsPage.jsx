@@ -385,8 +385,8 @@ function AdminPasswordSection() {
           <div className="rounded-xl border border-[#C9A84C]/30 bg-[#C9A84C]/10 p-4 text-sm text-[#f0ece4]">
             <p className="font-semibold text-[#C9A84C]">Password verified ✓</p>
             <p className="mt-1 text-white/60">{result.message}</p>
-            <p className="mt-2 font-mono text-[#C9A84C]">New password: {result.newPassword}</p>
-            <p className="mt-1 text-xs text-white/40">Copy this and update ADMIN_PASSWORD in your .env file, then restart the server.</p>
+            <p className="mt-2 break-all font-mono text-xs text-[#C9A84C]">{result.hashedPassword}</p>
+            <p className="mt-1 text-xs text-white/40">Copy the hash above and set it as ADMIN_PASSWORD in your Render dashboard env vars.</p>
           </div>
         )}
 

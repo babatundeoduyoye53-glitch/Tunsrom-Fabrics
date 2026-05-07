@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from 'react';
-import { ChevronDown, Heart, Menu, Search, ShoppingBag, X } from 'lucide-react';
+import { ChevronDown, Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 
 const navItems = [
@@ -13,8 +13,10 @@ const navItems = [
 const collections = [
   { label: 'Lace', category: 'lace' },
   { label: 'Jacquard', category: 'jacquard' },
-  { label: 'Wool', category: 'wool' },
   { label: 'Caps', category: 'caps' },
+  { label: 'Cashmere', category: 'cashmere' },
+  { label: 'Cofflins', category: 'cofflins' },
+  { label: 'Wool', category: 'wool' },
 ];
 
 function Header({
@@ -166,8 +168,17 @@ function Header({
                 setIsMenuOpen(false);
               }}
               className="rounded-full border border-black/10 p-2 text-[#1A1208] hover:border-gold hover:text-gold"
+              aria-label="Search"
             >
               <Search size={18} />
+            </button>
+            <button
+              type="button"
+              onClick={onAccountClick}
+              className="hidden rounded-full border border-black/10 p-2 text-[#1A1208] hover:border-gold hover:text-gold lg:flex"
+              aria-label="My account"
+            >
+              <User size={18} />
             </button>
             <button type="button" className="relative rounded-full border border-black/10 p-2 text-[#1A1208] hover:border-gold hover:text-gold">
               <Heart size={18} />
@@ -181,6 +192,7 @@ function Header({
               type="button"
               onClick={onCartClick}
               className="relative rounded-full border border-black/10 p-2 text-[#1A1208] hover:border-gold hover:text-gold lg:flex"
+              aria-label="Shopping bag"
             >
               <ShoppingBag size={18} />
               {cartCount > 0 && (
@@ -196,6 +208,7 @@ function Header({
                 setIsSearchOpen(false);
               }}
               className="rounded-full border border-black/10 p-2 text-[#1A1208] hover:border-gold hover:text-gold lg:hidden"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -222,8 +235,9 @@ function Header({
                         onAccountClick();
                         setIsMenuOpen(false);
                       }}
-                      className="w-full px-6 py-4 text-left text-sm font-medium text-white hover:text-gold hover:bg-white/10 border-b border-white/20 transition"
+                      className="flex w-full items-center gap-3 px-6 py-4 text-left text-sm font-semibold text-gold hover:bg-white/10 border-b border-white/20 transition"
                     >
+                      <User size={16} className="shrink-0" />
                       My Account
                     </button>
                     {navItems.map((item) => (

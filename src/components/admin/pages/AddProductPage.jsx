@@ -10,26 +10,22 @@ function AddProductPage({ onSave }) {
     category: 'lace',
     price: '',
     oldPrice: '',
-    image: '',
     isNew: false,
     isSale: false,
   });
+  const [imageFile, setImageFile] = useState(null);  // actual File for upload
   const [preview, setPreview] = useState('');
 
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
-
     if (!file) {
-      setForm((current) => ({ ...current, image: '' }));
+      setImageFile(null);
       setPreview('');
       return;
     }
-
+    setImageFile(file);
     const reader = new FileReader();
-    reader.onload = () => {
-      setForm((current) => ({ ...current, image: reader.result }));
-      setPreview(reader.result);
-    };
+    reader.onload = () => setPreview(reader.result);
     reader.readAsDataURL(file);
   };
 
@@ -44,19 +40,22 @@ function AddProductPage({ onSave }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const product = {
-      id: Date.now(),
-      name: form.name.trim(),
-      brand: form.brand.trim(),
-      category: form.category,
-      price: Number(form.price) || 0,
-      oldPrice: form.oldPrice ? Number(form.oldPrice) : null,
-      image: form.image.trim(),
-      isNew: form.isNew,
-      isSale: form.isSale,
-    };
+    if (!imageFile) {
+      alert('Please select a product image.');
+      return;
+    }
 
-    onSave(product);
+    const formData = new FormData();
+    formData.append('name', form.name.trim());
+    formData.append('brand', form.brand.trim());
+    formData.append('category', form.category);
+    formData.append('price', Number(form.price) || 0);
+    if (form.oldPrice) formData.append('oldPrice', Number(form.oldPrice));
+    formData.append('isNew', form.isNew);
+    formData.append('isSale', form.isSale);
+    formData.append('image', imageFile);
+
+    onSave(formData);
     navigate('/admin/products');
   };
 

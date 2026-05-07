@@ -1,20 +1,20 @@
 ﻿const galleryItems = [
   {
     title: 'Celebration Lace',
-    image: 'https://picsum.photos/seed/gallery-lace/700/1000',
+    image: '/WhatsApp Image 2026-05-01 at 7.17.55 PM.jpeg',
     className: 'md:row-span-2',
   },
   {
     title: 'Evening Jacquard',
-    image: 'https://picsum.photos/seed/gallery-jacquard/700/480',
+    image: '/e17c6d2245d47b71762c4bde442b2b66.jpg',
   },
   {
     title: 'Soft Wool Layers',
-    image: 'https://picsum.photos/seed/gallery-wool/700/480',
+    image: '/WhatsApp Image 2026-05-06 at 9.46.52 AM.jpeg',
   },
   {
     title: 'Refined Headwear',
-    image: 'https://picsum.photos/seed/gallery-caps/700/480',
+    image: '/WhatsApp Image 2026-05-01 at 6.44.35 PM.jpeg',
   },
 ];
 

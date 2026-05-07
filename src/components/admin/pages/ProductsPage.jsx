@@ -73,7 +73,7 @@ function ProductsPage({ products, onDelete }) {
           <>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {currentProducts.map((product) => (
-                <article key={product.id} className="rounded-3xl border border-white/10 bg-[#161b22] p-4 shadow-sm shadow-black/10 transition hover:border-[#C9A84C]/20">
+                <article key={product._id ?? product.id} className="rounded-3xl border border-white/10 bg-[#161b22] p-4 shadow-sm shadow-black/10 transition hover:border-[#C9A84C]/20">
                   <div className="flex items-start gap-4">
                     <img
                       src={product.image}
@@ -98,7 +98,7 @@ function ProductsPage({ products, onDelete }) {
                   <div className="mt-4 flex flex-wrap gap-2">
                     <button
                       type="button"
-                      onClick={() => navigate(`/admin/products/${product.id}`)}
+                      onClick={() => navigate(`/admin/products/${product._id ?? product.id}`)}
                       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-[#f0ece4] transition hover:border-[#C9A84C] hover:text-[#f0ece4]"
                     >
                       <Eye size={14} />
@@ -106,7 +106,7 @@ function ProductsPage({ products, onDelete }) {
                     </button>
                     <button
                       type="button"
-                      onClick={() => onDelete(product.id, product.name)}
+                      onClick={() => onDelete(product._id ?? product.id, product.name)}
                       className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-2 text-xs font-medium text-red-200 transition hover:bg-red-500/20"
                     >
                       <Trash2 size={14} />

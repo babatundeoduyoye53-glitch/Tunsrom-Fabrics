@@ -28,27 +28,28 @@ function CartDrawer({ isOpen, items, onClose, onQuantityChange, onRemoveItem }) 
 
       {/* Drawer */}
       <aside
-        className={`absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white shadow-2xl transition-transform duration-300 ${
+        className={`absolute right-0 top-0 flex h-full w-full max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 sm:max-w-md ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-black/5 px-6 py-5">
+        <div className="flex items-center justify-between border-b border-black/5 px-5 py-4 sm:px-6 sm:py-5">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Your bag</p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-[#1A1208]">Shopping Bag</h2>
+            <h2 className="mt-1.5 font-display text-2xl font-bold text-[#1A1208] sm:mt-2 sm:text-3xl">Shopping Bag</h2>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="rounded-full border border-black/10 p-2 text-[#1A1208] hover:border-gold hover:text-gold"
+            aria-label="Close cart"
           >
             <X size={18} />
           </button>
         </div>
 
         {/* Items */}
-        <div className="flex-1 space-y-4 overflow-y-auto px-6 py-6">
+        <div className="flex-1 space-y-4 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
           {items.length === 0 ? (
             <div className="rounded-[28px] bg-cream p-8 text-center">
               <ShoppingBag className="mx-auto text-[#6B6456]" size={32} />
@@ -122,7 +123,7 @@ function CartDrawer({ isOpen, items, onClose, onQuantityChange, onRemoveItem }) 
 
         {/* Footer — only shown when cart has items */}
         {items.length > 0 && (
-          <div className="border-t border-black/5 px-6 py-5 space-y-3">
+          <div className="border-t border-black/5 px-5 py-4 space-y-3 sm:px-6 sm:py-5">
             {/* Subtotal */}
             <div className="flex items-center justify-between text-sm text-[#6B6456]">
               <span>Subtotal ({items.reduce((n, i) => n + i.quantity, 0)} item{items.reduce((n, i) => n + i.quantity, 0) !== 1 ? 's' : ''})</span>

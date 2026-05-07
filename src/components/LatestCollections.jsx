@@ -2,19 +2,19 @@
   {
     title: 'Lace Collection',
     description: 'Elegant lace fabrics with beautiful embroidery and light-catching finishes for bridal and event wear.',
-    image: 'https://picsum.photos/seed/latest-lace/700/800',
+    image: '/fee2cb84a029d575e6a0befe6a48451a.jpg',
     category: 'lace',
   },
   {
     title: 'Jacquard Collection',
     description: 'Structured jacquard pieces that bring bold texture and graceful form to dresses, suits, and separates.',
-    image: 'https://picsum.photos/seed/latest-jacquard/700/800',
+    image: '/c401c2b5aa82b901fa67da9e8d1311d5.jpg',
     category: 'jacquard',
   },
   {
     title: 'Wool and Caps',
     description: 'A refined mix of warm wool materials and finishing accessories for polished everyday styling.',
-    image: 'https://picsum.photos/seed/latest-woolcaps/700/800',
+    image: "/Cashmere 220's wool.jpg",
     category: 'wool',
   },
 ];

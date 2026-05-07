@@ -5,8 +5,10 @@ const tabs = [
   { id: 'all', label: 'All' },
   { id: 'lace', label: 'Lace' },
   { id: 'jacquard', label: 'Jacquard' },
-  { id: 'wool', label: 'Wool' },
   { id: 'caps', label: 'Caps' },
+  { id: 'cashmere', label: 'Cashmere' },
+  { id: 'cofflins', label: 'Cofflins' },
+  { id: 'wool', label: 'Wool' },
 ];
 
 const sortOptions = [
@@ -210,10 +212,10 @@ function ShopSection({
                 className="w-full rounded-2xl border border-[#eadcc0] bg-white px-4 py-3 text-sm text-[#1A1208] outline-none transition focus:border-gold"
               >
                 <option value="all">All prices</option>
-                <option value="under-30000">Under ?30,000</option>
-                <option value="30000-70000">?30,000 - ?70,000</option>
-                <option value="70000-120000">?70,000 - ?120,000</option>
-                <option value="120000-plus">Above ?120,000</option>
+                <option value="under-30000">Under ₦30,000</option>
+                <option value="30000-70000">₦30,000 – ₦70,000</option>
+                <option value="70000-120000">₦70,000 – ₦120,000</option>
+                <option value="120000-plus">Above ₦120,000</option>
               </select>
             </label>
 

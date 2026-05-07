@@ -6,7 +6,7 @@ function ProductDetailsPage({ products, onDelete, onSave }) {
   const { productId } = useParams();
   const navigate = useNavigate();
   const product = useMemo(
-    () => products.find((item) => String(item.id) === productId),
+    () => products.find((item) => String(item._id ?? item.id) === productId),
     [products, productId],
   );
 
@@ -22,21 +22,20 @@ function ProductDetailsPage({ products, onDelete, onSave }) {
     isSale: product?.isSale ?? false,
   }));
   const [imagePreview, setImagePreview] = useState(product?.image ?? '');
+  const [imageFile, setImageFile] = useState(null); // actual File object for upload
 
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
 
     if (!file) {
-      setForm((current) => ({ ...current, image: '' }));
-      setImagePreview('');
+      setImageFile(null);
+      setImagePreview(product?.image ?? '');
       return;
     }
 
+    setImageFile(file);
     const reader = new FileReader();
-    reader.onload = () => {
-      setForm((current) => ({ ...current, image: reader.result }));
-      setImagePreview(reader.result);
-    };
+    reader.onload = () => setImagePreview(reader.result);
     reader.readAsDataURL(file);
   };
 
@@ -68,25 +67,32 @@ function ProductDetailsPage({ products, onDelete, onSave }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const updatedProduct = {
-      ...product,
-      name: form.name.trim(),
-      brand: form.brand.trim(),
-      category: form.category,
-      price: Number(form.price) || 0,
-      oldPrice: form.oldPrice ? Number(form.oldPrice) : null,
-      image: form.image.trim(),
-      isNew: form.isNew,
-      isSale: form.isSale,
-    };
 
-    onSave(updatedProduct);
+    const formData = new FormData();
+    formData.append('name', form.name.trim());
+    formData.append('brand', form.brand.trim());
+    formData.append('category', form.category);
+    formData.append('price', Number(form.price) || 0);
+    if (form.oldPrice) formData.append('oldPrice', Number(form.oldPrice));
+    formData.append('isNew', form.isNew);
+    formData.append('isSale', form.isSale);
+
+    if (imageFile) {
+      // New file selected — upload it
+      formData.append('image', imageFile);
+    } else {
+      // Keep existing image URL
+      formData.append('image', product.image);
+    }
+
+    // Pass _id so App.jsx knows which product to update
+    onSave({ _id: product._id ?? product.id, formData });
     setIsEditing(false);
   };
 
   const handleDelete = () => {
     if (window.confirm('Delete this product permanently?')) {
-      onDelete(product.id);
+      onDelete(product._id ?? product.id, product.name);
       navigate('/admin/products');
     }
   };

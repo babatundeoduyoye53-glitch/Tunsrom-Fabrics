@@ -1,4 +1,7 @@
-﻿function InstagramIcon(props) {
+﻿import { useEffect, useState } from 'react';
+import { fetchPublicSettings } from '../api/settings';
+
+function InstagramIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -41,20 +44,33 @@ function MailIcon(props) {
   );
 }
 
-const socialLinks = [
+const defaultSocialLinks = [
   { label: 'Instagram', href: '#', icon: InstagramIcon },
   { label: 'Facebook', href: '#', icon: FacebookIcon },
   { label: 'Twitter', href: '#', icon: TwitterIcon },
 ];
 
 function TopBar() {
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    fetchPublicSettings()
+      .then(setSettings)
+      .catch(() => {});
+  }, []);
+
+  const socialLinks = [
+    { label: 'Instagram', href: settings?.instagram || '#', icon: InstagramIcon },
+    { label: 'Facebook', href: settings?.facebook || '#', icon: FacebookIcon },
+    { label: 'TikTok', href: settings?.tiktok || '#', icon: TwitterIcon },
+  ];
   return (
-    <div className="bg-gray-900 px-6 py-1 text-xs text-white">
+    <div className="bg-gray-900 px-4 py-2 text-xs text-white sm:px-6 sm:py-1.5">
       {/* Mobile layout */}
       <div className="flex items-center justify-between md:hidden">
-        <a href="tel:+2348034619489" className="hover:text-gold text-white/80 flex items-center gap-1.5">
-          <PhoneIcon className="h-[14px] w-[14px] shrink-0" />
-          <span>+234 8034619489</span>
+        <a href="tel:+2348034619489" className="hover:text-gold text-white/90 flex items-center gap-1.5 font-medium">
+          <PhoneIcon className="h-[13px] w-[13px] shrink-0" />
+          <span>+234 803 461 9489</span>
         </a>
         <div className="flex items-center gap-2">
           {socialLinks.map(({ label, href, icon: Icon }) => (
@@ -62,9 +78,9 @@ function TopBar() {
               key={label}
               href={href}
               aria-label={label}
-              className="rounded-full border border-white/15 p-1 text-white/80 hover:border-gold hover:text-gold"
+              className="rounded-full border border-white/15 p-1.5 text-white/80 hover:border-gold hover:text-gold"
             >
-              <Icon className="h-[12px] w-[12px]" />
+              <Icon className="h-[11px] w-[11px]" />
             </a>
           ))}
         </div>
@@ -72,7 +88,7 @@ function TopBar() {
 
       {/* Desktop layout */}
       <div className="mx-auto hidden max-w-7xl items-center justify-between gap-4 md:flex">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <a href="mailto:tunsrom.fabrics@gmail.com" className="hover:text-gold text-white/80 flex items-center gap-1.5">
             <MailIcon className="h-[14px] w-[14px] shrink-0" />
             <span>tunsrom.fabrics@gmail.com</span>
@@ -92,7 +108,7 @@ function TopBar() {
         </div>
         <a href="tel:+2348034619489" className="hover:text-gold text-white/80 flex items-center gap-1.5">
           <PhoneIcon className="h-[14px] w-[14px] shrink-0" />
-          <span>+234 8034619489</span>
+          <span>+234 803 461 9489</span>
         </a>
       </div>
     </div>

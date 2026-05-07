@@ -1,14 +1,23 @@
 ﻿import { useState } from 'react';
 
+const WHATSAPP_NUMBER = '2348034619489';
+
 function Newsletter() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setMessage('Thank you!');
+    // Send subscriber email to WhatsApp so you can follow up
+    const text = `New newsletter subscriber: ${email}`;
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
+      '_blank',
+      'noopener,noreferrer',
+    );
+    setMessage('Thank you for subscribing!');
     setEmail('');
-    window.setTimeout(() => setMessage(''), 2600);
+    window.setTimeout(() => setMessage(''), 3000);
   };
 
   return (

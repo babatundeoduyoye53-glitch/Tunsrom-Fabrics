@@ -7,8 +7,10 @@ import { buildSingleProductMessage } from '../config/whatsapp';
 const categoryLabels = {
   lace: 'Lace fabrics',
   jacquard: 'Jacquard fabrics',
-  wool: 'Wool materials',
   caps: 'Caps and headwear',
+  cashmere: 'Cashmere materials',
+  cofflins: 'Cofflins',
+  wool: 'Wool materials',
 };
 
 const detailCopy = {
@@ -16,10 +18,14 @@ const detailCopy = {
     'Elegant lace fabrics curated for bridal looks, asoebi styling, and statement occasion pieces with a premium drape.',
   jacquard:
     'Rich jacquard textures designed for structured silhouettes, ceremonial outfits, and elevated special-event tailoring.',
-  wool:
-    'Soft, refined wool materials that balance comfort, polish, and durability for premium ready-to-wear or suiting.',
   caps:
     'Finishing accessories that complete a polished look, from everyday styling to festive wardrobe accents.',
+  cashmere:
+    'Luxuriously soft cashmere materials selected for premium comfort, warmth, and refined everyday dressing.',
+  cofflins:
+    'Distinctive cofflins fabrics curated for bold, statement-making occasion and celebration wear.',
+  wool:
+    'Soft, refined wool materials that balance comfort, polish, and durability for premium ready-to-wear or suiting.',
 };
 
 function ProductDetailsPage({ onAddToCart, onBack, onViewProduct, product, relatedProducts }) {

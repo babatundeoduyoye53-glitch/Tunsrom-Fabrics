@@ -1,4 +1,6 @@
 ﻿import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchPublicSettings } from '../api/settings';
 
 function InstagramIcon(props) {
   return (
@@ -30,8 +32,8 @@ const footerColumns = [
   {
     title: 'Information',
     links: [
-      { label: 'About Us', href: '#' },
-      { label: 'Fabric Care', href: '#' },
+      { label: 'About Us', href: '/?section=about', type: 'internal' },
+      { label: 'Fabric Care', href: '/faqs', type: 'internal' },
       { label: 'Delivery Policy', href: '/delivery-policy', type: 'internal' },
       { label: 'Returns', href: '/returns', type: 'internal' },
     ],
@@ -40,7 +42,7 @@ const footerColumns = [
     title: 'Customer Service',
     links: [
       { label: 'My Account', href: '/account', type: 'internal' },
-      { label: 'Wishlist', href: '#' },
+      { label: 'Wishlist', href: '/account', type: 'internal' },
       { label: 'Order Tracking', href: '/order-tracking', type: 'internal' },
       { label: 'FAQs', href: '/faqs', type: 'internal' },
     ],
@@ -48,10 +50,10 @@ const footerColumns = [
   {
     title: 'Collections',
     links: [
-      { label: 'Lace Fabrics', href: '#' },
-      { label: 'Jacquard', href: '#' },
-      { label: 'Wool Materials', href: '#' },
-      { label: 'Caps', href: '#' },
+      { label: 'Lace Fabrics', href: '/shop?category=lace', type: 'internal' },
+      { label: 'Jacquard', href: '/shop?category=jacquard', type: 'internal' },
+      { label: 'Wool Materials', href: '/shop?category=wool', type: 'internal' },
+      { label: 'Caps', href: '/shop?category=caps', type: 'internal' },
     ],
   },
   {
@@ -59,7 +61,7 @@ const footerColumns = [
     links: [
       { label: '+234 8034619489', href: 'tel:+2348034619489' },
       { label: 'tunsrom.fabrics@gmail.com', href: 'mailto:tunsrom.fabrics@gmail.com' },
-      { label: 'Olisa, Ijebu Ode, Ogun State', href: '#' },
+      { label: 'Olisa, Ijebu Ode, Ogun State', href: '/contact', type: 'internal' },
       { label: 'Mon - Sat, 9am - 6pm', href: '#' },
     ],
   },
@@ -68,6 +70,20 @@ const footerColumns = [
 const socials = [InstagramIcon, FacebookIcon, TwitterIcon];
 
 function Footer() {
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    fetchPublicSettings()
+      .then(setSettings)
+      .catch(() => {});
+  }, []);
+
+  const socialLinks = [
+    { icon: InstagramIcon, href: settings?.instagram || '#', label: 'Instagram' },
+    { icon: FacebookIcon, href: settings?.facebook || '#', label: 'Facebook' },
+    { icon: TwitterIcon, href: settings?.tiktok || '#', label: 'TikTok' },
+  ];
+
   return (
     <footer id="contact" className="bg-gray-900 px-6 py-14 text-white sm:py-20">
       <div className="mx-auto max-w-7xl space-y-14">
@@ -79,8 +95,8 @@ function Footer() {
             </p>
           </div>
           <div className="flex gap-3">
-            {socials.map((Icon, index) => (
-              <a key={index} href="#" className="rounded-full border border-white/15 p-3 text-white/70 transition hover:border-gold hover:text-gold">
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="rounded-full border border-white/15 p-3 text-white/70 transition hover:border-gold hover:text-gold">
                 <Icon className="h-[18px] w-[18px]" />
               </a>
             ))}

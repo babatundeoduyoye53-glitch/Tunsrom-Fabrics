@@ -4,9 +4,11 @@ import { adminRequest } from '../../../api/client';
 
 const salesByCategory = [
   { name: 'Lace', value: 35, color: '#8B1A1A' },
-  { name: 'Ankara', value: 28, color: '#C9A84C' },
-  { name: 'Cord', value: 22, color: '#D4B566' },
-  { name: 'Jacquard', value: 15, color: '#A07A44' },
+  { name: 'Jacquard', value: 25, color: '#C9A84C' },
+  { name: 'Wool', value: 20, color: '#D4B566' },
+  { name: 'Caps', value: 12, color: '#A07A44' },
+  { name: 'Cashmere', value: 5, color: '#7C9C54' },
+  { name: 'Cofflins', value: 3, color: '#5a7a8a' },
 ];
 
 function AdminDashboard({ products }) {
@@ -24,10 +26,10 @@ function AdminDashboard({ products }) {
   }, []);
 
   const statCards = [
-    { label: 'Total Revenue', value: stats ? `₦${stats.totalRevenue.toLocaleString()}` : '—', change: '', isPositive: true },
-    { label: 'Total Orders', value: stats ? stats.totalOrders.toLocaleString() : '—', change: '', isPositive: true },
-    { label: 'Paid Orders', value: stats ? stats.paidOrders.toLocaleString() : '—', change: '', isPositive: true },
-    { label: 'Total Customers', value: stats ? stats.totalCustomers.toLocaleString() : '—', change: '', isPositive: true },
+    { label: 'Total Revenue', value: stats ? `₦${stats.totalRevenue.toLocaleString()}` : '—' },
+    { label: 'Total Orders', value: stats ? stats.totalOrders.toLocaleString() : '—' },
+    { label: 'Paid Orders', value: stats ? stats.paidOrders.toLocaleString() : '—' },
+    { label: 'Total Customers', value: stats ? stats.totalCustomers.toLocaleString() : '—' },
   ];
 
   const topProducts = products.slice(0, 5).map((p) => ({
@@ -53,10 +55,7 @@ function AdminDashboard({ products }) {
             className="bg-[#161b22] border border-white/10 rounded-xl p-6 hover:border-[#C9A84C]/30 transition"
           >
             <p className="text-white/60 text-sm font-medium mb-2">{stat.label}</p>
-            <p className="font-admin-mono text-2xl font-bold text-[#f0ece4] mb-3">{stat.value}</p>
-            <p className={`text-sm font-medium ${stat.isPositive ? 'text-emerald-400' : 'text-red-400'}`}>
-              {stat.isPositive ? '↑' : '↓'} {stat.change} vs last month
-            </p>
+            <p className="font-admin-mono text-2xl font-bold text-[#f0ece4]">{stat.value}</p>
           </div>
         ))}
       </div>

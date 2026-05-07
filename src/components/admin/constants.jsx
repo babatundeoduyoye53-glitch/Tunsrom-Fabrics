@@ -9,10 +9,10 @@ import {
 export const categoryLabels = {
   lace: 'Lace',
   jacquard: 'Jacquard',
-  wool: 'Wool',
   caps: 'Caps',
-  ankara: 'Ankara',
-  cord: 'Cord',
+  cashmere: 'Cashmere',
+  cofflins: 'Cofflins',
+  wool: 'Wool',
 };
 
 export const categoryOptions = Object.entries(categoryLabels);

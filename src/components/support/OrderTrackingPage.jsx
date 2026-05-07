@@ -34,7 +34,7 @@ function OrderTrackingPage() {
       <SupportHero
         eyebrow="Order Tracking"
         title="Track the progress of your fabric order"
-        description="Backend tracking is not connected yet, but this page gives customers the right place to check order progress and know how to request delivery updates."
+        description="Enter your order reference number to check the current status of your order."
       />
 
       <section className="px-6 py-16 sm:py-20">
@@ -42,7 +42,7 @@ function OrderTrackingPage() {
           <article className="rounded-[32px] border border-black/5 bg-white p-8 shadow-sm shadow-black/5 sm:p-10">
             <h2 className="font-display text-3xl text-[#1A1208]">Track your order</h2>
             <p className="mt-4 text-sm leading-7 text-[#6B6456]">
-              Enter your order reference to check the current status. For now, this is a placeholder flow until backend order tracking is connected.
+              Enter your order reference (e.g., ORD-00001) to check the current status and details of your order.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-4">
@@ -52,7 +52,7 @@ function OrderTrackingPage() {
                   type="text"
                   value={trackingId}
                   onChange={(event) => setTrackingId(event.target.value)}
-                  placeholder="Example: TX-2041"
+                  placeholder="Example: ORD-00001"
                   className="w-full rounded-2xl border border-black/10 bg-[#fcfaf6] px-4 py-3 text-sm text-[#1A1208] outline-none focus:border-gold"
                 />
               </label>

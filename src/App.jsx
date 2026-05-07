@@ -19,6 +19,7 @@ import AdminPage from './components/admin';
 import AdminLogin from './components/admin/components/AdminLogin';
 import ProductDetailsPage from './components/ProductDetailsPage';
 import WhatsAppChatButton from './components/WhatsAppChatButton';
+import ScrollToTop from './components/ScrollToTop';
 import DeliveryPolicyPage from './components/support/DeliveryPolicyPage';
 import ReturnsPage from './components/support/ReturnsPage';
 import FAQsPage from './components/support/FAQsPage';
@@ -194,6 +195,7 @@ function StorefrontLayout({ products, loading, children }) {
       </main>
       <Footer />
       <WhatsAppChatButton />
+      <ScrollToTop />
       <CartDrawer
         isOpen={isCartOpen}
         items={cartProducts}
@@ -324,19 +326,15 @@ function App() {
 
   const handleSaveProduct = async (productDraft) => {
     try {
-      const formData = new FormData();
-      Object.entries(productDraft).forEach(([key, value]) => {
-        if (value !== null && value !== undefined) {
-          formData.append(key, value);
-        }
-      });
-
-      if (productDraft._id) {
-        const updated = await updateProduct(productDraft._id, formData);
-        setProducts((current) => current.map((p) => (p._id === updated._id ? updated : p)));
-      } else {
-        const created = await createProduct(formData);
+      // Edit form passes { _id, formData } — Add form passes FormData directly
+      if (productDraft instanceof FormData) {
+        // New product
+        const created = await createProduct(productDraft);
         setProducts((current) => [created, ...current]);
+      } else if (productDraft._id && productDraft.formData instanceof FormData) {
+        // Update existing product
+        const updated = await updateProduct(productDraft._id, productDraft.formData);
+        setProducts((current) => current.map((p) => (p._id === updated._id ? updated : p)));
       }
     } catch (err) {
       console.error('Failed to save product:', err);

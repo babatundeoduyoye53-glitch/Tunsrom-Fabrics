@@ -24,15 +24,32 @@ function NewArrivals({ onAddToCart, onShopClick, onViewProduct, products }) {
         </div>
 
         <div className="-mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 xl:grid-cols-4">
-          {newProducts.map((product) => (
-            <div key={product.id} className="w-[78vw] max-w-[300px] shrink-0 snap-start md:w-auto md:max-w-none">
-              <ProductCard
-                product={product}
-                onAddToCart={onAddToCart}
-                onViewProduct={onViewProduct}
-              />
+          {newProducts.length > 0 ? (
+            newProducts.map((product) => (
+              <div key={product.id} className="w-[78vw] max-w-[300px] shrink-0 snap-start md:w-auto md:max-w-none">
+                <ProductCard
+                  product={product}
+                  onAddToCart={onAddToCart}
+                  onViewProduct={onViewProduct}
+                />
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full rounded-[28px] border border-[#eadcc0] bg-[#fffcf8] px-6 py-14 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Coming soon</p>
+              <h3 className="mt-4 font-display text-3xl text-[#1A1208]">New arrivals dropping soon</h3>
+              <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-[#6B6456]">
+                Check back shortly — fresh fabrics are being added to the collection.
+              </p>
+              <button
+                type="button"
+                onClick={onShopClick}
+                className="mt-6 inline-flex rounded-full bg-gold px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#735610]"
+              >
+                Browse All Products
+              </button>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </section>

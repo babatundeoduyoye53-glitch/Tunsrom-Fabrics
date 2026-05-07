@@ -74,16 +74,16 @@ function HeroSlider({ onShopClick }) {
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.5em] text-[#f8d98a]">
                 {slide.label}
               </p>
-              <h1 className="font-display text-3xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl xl:text-7xl">
+              <h1 className="font-display text-2xl font-bold leading-[1.1] sm:text-4xl lg:text-5xl xl:text-6xl">
                 {slide.headline}
               </h1>
-              <p className="mt-4 max-w-xl text-sm leading-7 text-white/80 sm:mt-6 sm:text-base lg:text-lg">
+              <p className="mt-4 max-w-xl text-sm leading-7 text-white/80 sm:mt-5 lg:text-base">
                 {slide.subtext}
               </p>
               <button
                 type="button"
                 onClick={onShopClick}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-gold/30 transition hover:-translate-y-0.5 hover:bg-[#735610] sm:mt-8"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-gold/30 transition hover:-translate-y-0.5 hover:bg-[#735610] sm:mt-8"
               >
                 Shop Now
               </button>
