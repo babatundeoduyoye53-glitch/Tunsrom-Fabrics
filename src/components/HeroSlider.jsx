@@ -4,30 +4,24 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const slides = [
   {
     id: 1,
-    // Stacked colorful patterned fabrics - matches the folded bolt display
     image: '/WhatsApp Image 2026-05-01 at 10.45.59 AM.jpeg',
     label: 'Luxury edit',
-    headline: 'Curated fabrics for unforgettable Nigerian celebrations',
-    subtext:
-      'Shop richly textured lace, jacquard, wool, and refined finishing pieces selected to feel premium from first glance to final stitch.',
+    headline: 'Premium fabrics for Nigerian celebrations',
+    subtext: 'Lace, jacquard, wool, and finishing pieces — curated for quality.',
   },
   {
     id: 2,
-    // Stack of colorful patterned fabrics flat lay
     image: '/WhatsApp Image 2026-05-01 at 10.54.40 AM.jpeg',
     label: 'New season',
-    headline: 'Statement jacquard and lace with graceful structure',
-    subtext:
-      'Build occasionwear that holds shape, catches light, and feels made for memorable entrances.',
+    headline: 'Jacquard and lace with graceful structure',
+    subtext: 'Occasionwear that holds shape and catches light.',
   },
   {
     id: 3,
-    // Colorful african fabrics displayed for sale
     image: '/WhatsApp Image 2026-05-01 at 6.44.35 PM.jpeg',
     label: 'Finishing touch',
-    headline: 'From soft wool layers to polished caps, every detail counts',
-    subtext:
-      'Bring warmth, elegance, and balance into your wardrobe with fabrics and accessories that style effortlessly together.',
+    headline: 'Wool, caps, and every detail that matters',
+    subtext: 'Complete your look with pieces that style effortlessly together.',
   },
 ];
 
@@ -69,21 +63,21 @@ function HeroSlider({ onShopClick }) {
           <img src={slide.image} alt={slide.headline} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/30" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#8B691455,transparent_38%)]" />
-          <div className="mx-auto flex h-full max-w-7xl items-center px-8 lg:px-12">
+          <div className="mx-auto flex h-full max-w-7xl items-center px-5 sm:px-8 lg:px-12">
             <div className="max-w-2xl text-white">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.5em] text-[#f8d98a]">
+              <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.4em] text-[#f8d98a] sm:mb-3 sm:text-xs sm:tracking-[0.5em]">
                 {slide.label}
               </p>
-              <h1 className="font-display text-2xl font-bold leading-[1.1] sm:text-4xl lg:text-5xl xl:text-6xl">
+              <h1 className="font-display text-xl font-bold leading-[1.15] xs:text-2xl sm:text-4xl lg:text-5xl xl:text-6xl">
                 {slide.headline}
               </h1>
-              <p className="mt-4 max-w-xl text-sm leading-7 text-white/80 sm:mt-5 lg:text-base">
+              <p className="mt-3 max-w-xl text-xs leading-6 text-white/80 sm:mt-5 sm:text-sm sm:leading-7 lg:text-base">
                 {slide.subtext}
               </p>
               <button
                 type="button"
                 onClick={onShopClick}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-gold/30 transition hover:-translate-y-0.5 hover:bg-[#735610] sm:mt-8"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-gold/30 transition hover:-translate-y-0.5 hover:bg-[#735610] sm:mt-8 sm:px-7 sm:py-3.5 sm:text-sm"
               >
                 Shop Now
               </button>

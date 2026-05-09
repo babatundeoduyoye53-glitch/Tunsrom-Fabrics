@@ -2,6 +2,7 @@
 
 function ShopPage({
   activeCategory,
+  loading,
   onAddToCart,
   onCategoryChange,
   onNavigateHome,
@@ -11,7 +12,6 @@ function ShopPage({
 }) {
   return (
     <div className="bg-white">
-      {/* Compact header — no more giant hero blocking products */}
       <div className="border-b border-black/5 bg-[#faf8f5] px-6 py-6 sm:py-8">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <div>
@@ -34,6 +34,7 @@ function ShopPage({
         activeCategory={activeCategory}
         enablePagination
         itemsPerPage={8}
+        loading={loading}
         onAddToCart={onAddToCart}
         onCategoryChange={onCategoryChange}
         onViewProduct={onViewProduct}

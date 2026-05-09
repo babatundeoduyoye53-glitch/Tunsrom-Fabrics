@@ -11,19 +11,19 @@
         </div>
         <div className="flex items-center px-6 py-8 sm:px-12 sm:py-12 lg:px-16 lg:py-16">
           <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gold">Crafted for distinction</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gold">About us</p>
             <h2 className="mt-4 font-display text-2xl font-bold leading-tight text-[#1A1208] sm:text-4xl lg:text-5xl">
-              Textiles chosen for buyers who care about drape, finish, and confidence
+              Fabrics chosen for drape, finish, and confidence
             </h2>
-            <p className="mt-4 text-sm leading-7 text-[#6B6456] sm:mt-5 sm:text-base lg:text-base">
-              Every drop is selected with a premium wardrobe in mind, from richly woven jacquard to soft wool and lace with graceful movement.
+            <p className="mt-4 text-sm leading-7 text-[#6B6456] sm:mt-5">
+              Every piece is selected with a premium wardrobe in mind — jacquard, wool, lace, and finishing accessories.
             </p>
             <button
               type="button"
               onClick={onShopClick}
               className="mt-6 inline-flex rounded-full border border-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.25em] text-gold transition hover:bg-gold hover:text-white sm:mt-8"
             >
-              Discover Our Fabrics
+              Shop Now
             </button>
           </div>
         </div>

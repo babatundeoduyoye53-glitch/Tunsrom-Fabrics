@@ -99,7 +99,7 @@ function ProductCard({ onAddToCart, onViewProduct, product }) {
           <button
             type="button"
             onClick={() => onViewProduct?.(product)}
-            className="text-left font-display text-lg font-semibold text-[#1A1208] transition hover:text-gold lg:text-xl"
+            className="text-left font-display text-base font-semibold text-[#1A1208] transition hover:text-gold sm:text-lg lg:text-xl"
           >
             {product.name}
           </button>

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import AppPreloader from './components/AppPreloader';
+import { ProductDetailSkeleton } from './components/Skeleton';
 import TopBar from './components/TopBar';
 import Header from './components/Header';
 import HeroSlider from './components/HeroSlider';
@@ -167,11 +169,7 @@ function StorefrontLayout({ products, loading, children }) {
   };
 
   if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-cream">
-        <p className="text-[#6B6456]">Loading products…</p>
-      </div>
-    );
+    return null; // AppPreloader handles the full-screen state
   }
 
   return (
@@ -208,7 +206,7 @@ function StorefrontLayout({ products, loading, children }) {
 }
 
 // ─── Home page ───
-function HomePage({ products, addToCart }) {
+function HomePage({ products, addToCart, loading }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams] = useSearchParams();
@@ -241,6 +239,7 @@ function HomePage({ products, addToCart }) {
         onShopClick={() => navigate('/shop')}
         onViewProduct={(product) => navigate(`/products/${product.id}`)}
         products={normalisedProducts}
+        loading={loading}
       />
       <BlogSection />
       <Testimonials />
@@ -250,7 +249,7 @@ function HomePage({ products, addToCart }) {
 }
 
 // ─── Shop page wrapper (reads ?category and ?search from URL) ───
-function ShopPageWrapper({ products, addToCart }) {
+function ShopPageWrapper({ products, addToCart, loading }) {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -269,6 +268,7 @@ function ShopPageWrapper({ products, addToCart }) {
   return (
     <ShopPage
       activeCategory={activeCategory}
+      loading={loading}
       onAddToCart={addToCart}
       onCategoryChange={handleCategoryChange}
       onNavigateHome={() => navigate('/')}
@@ -280,7 +280,7 @@ function ShopPageWrapper({ products, addToCart }) {
 }
 
 // ─── Product detail page wrapper (reads :productId from URL) ───
-function ProductPageWrapper({ products, addToCart }) {
+function ProductPageWrapper({ products, addToCart, loading }) {
   const navigate = useNavigate();
   const location = useLocation();
   const productId = location.pathname.split('/products/')[1];
@@ -298,6 +298,10 @@ function ProductPageWrapper({ products, addToCart }) {
       .filter((p) => p.id !== product.id && p.category === product.category)
       .slice(0, 4);
   }, [normalisedProducts, product]);
+
+  if (loading) {
+    return <ProductDetailSkeleton />;
+  }
 
   if (!product) return <Navigate replace to="/shop" />;
 
@@ -351,13 +355,15 @@ function App() {
   };
 
   return (
-    <Routes>
+    <>
+      <AppPreloader ready={!loading} />
+      <Routes>
       {/* ── Storefront routes ── */}
       <Route
         path="/"
         element={
           <StorefrontLayout products={products} loading={loading}>
-            {({ addToCart }) => <HomePage products={products} addToCart={addToCart} />}
+            {({ addToCart }) => <HomePage products={products} addToCart={addToCart} loading={loading} />}
           </StorefrontLayout>
         }
       />
@@ -365,7 +371,7 @@ function App() {
         path="/shop"
         element={
           <StorefrontLayout products={products} loading={loading}>
-            {({ addToCart }) => <ShopPageWrapper products={products} addToCart={addToCart} />}
+            {({ addToCart }) => <ShopPageWrapper products={products} addToCart={addToCart} loading={loading} />}
           </StorefrontLayout>
         }
       />
@@ -381,7 +387,7 @@ function App() {
         path="/products/:productId"
         element={
           <StorefrontLayout products={products} loading={loading}>
-            {({ addToCart }) => <ProductPageWrapper products={products} addToCart={addToCart} />}
+            {({ addToCart }) => <ProductPageWrapper products={products} addToCart={addToCart} loading={loading} />}
           </StorefrontLayout>
         }
       />
@@ -428,6 +434,7 @@ function App() {
 
       <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>
+    </>
   );
 }
 

@@ -91,28 +91,28 @@ function ProductDetailsPage({ onAddToCart, onBack, onViewProduct, product, relat
               </div>
 
               <div className="mt-8 grid gap-3 grid-cols-1 sm:grid-cols-3">
-                <div className="rounded-[24px] border border-[#eadcc0] bg-white p-5">
+                <div className="rounded-[24px] border border-[#eadcc0] bg-white p-4 sm:p-5">
                   <Truck className="text-gold" size={22} />
                   <p className="mt-3 text-sm font-semibold text-[#1A1208]">Nationwide delivery</p>
                   <p className="mt-2 text-sm leading-6 text-[#6B6456]">Dispatch support for Lagos, Ogun, Abuja, and interstate orders.</p>
                 </div>
-                <div className="rounded-[24px] border border-[#eadcc0] bg-white p-5">
+                <div className="rounded-[24px] border border-[#eadcc0] bg-white p-4 sm:p-5">
                   <ShieldCheck className="text-gold" size={22} />
                   <p className="mt-3 text-sm font-semibold text-[#1A1208]">Quality assurance</p>
                   <p className="mt-2 text-sm leading-6 text-[#6B6456]">Each fabric is selected for finish, texture, and occasion-ready presentation.</p>
                 </div>
-                <div className="rounded-[24px] border border-[#eadcc0] bg-white p-5">
+                <div className="rounded-[24px] border border-[#eadcc0] bg-white p-4 sm:p-5">
                   <ShoppingBag className="text-gold" size={22} />
                   <p className="mt-3 text-sm font-semibold text-[#1A1208]">Fast order support</p>
                   <p className="mt-2 text-sm leading-6 text-[#6B6456]">Need bulk or styling help? Our team can guide your purchase quickly.</p>
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <button
                   type="button"
                   onClick={handleWhatsAppOrder}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#1ebe5d]"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#1ebe5d] sm:w-auto"
                 >
                   <MessageCircle size={16} />
                   WhatsApp to Order
@@ -120,7 +120,7 @@ function ProductDetailsPage({ onAddToCart, onBack, onViewProduct, product, relat
                 <button
                   type="button"
                   onClick={() => onAddToCart(product)}
-                  className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#735610]"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#735610] sm:w-auto"
                 >
                   <ShoppingBag size={16} />
                   Add to Bag
@@ -128,7 +128,7 @@ function ProductDetailsPage({ onAddToCart, onBack, onViewProduct, product, relat
                 <button
                   type="button"
                   onClick={toggleWishlist}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#dfcfaa] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.24em] text-[#1A1208] transition hover:border-gold hover:text-gold"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#dfcfaa] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.24em] text-[#1A1208] transition hover:border-gold hover:text-gold sm:w-auto"
                 >
                   <Heart size={16} className={isWishlisted ? 'fill-burgundy text-burgundy' : ''} />
                   {isWishlisted ? 'Saved' : 'Save item'}

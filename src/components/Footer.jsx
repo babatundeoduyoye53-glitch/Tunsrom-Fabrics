@@ -91,7 +91,7 @@ function Footer() {
           <div className="max-w-sm">
             <h2 className="font-display text-2xl font-bold sm:text-3xl">Tunsrom Fabrics</h2>
             <p className="mt-3 text-sm leading-7 text-white/60">
-              Premium fabrics and finishing pieces selected for celebrations, tailoring, and elevated everyday dressing across Nigeria and beyond.
+              Premium fabrics for celebrations, tailoring, and everyday dressing across Nigeria.
             </p>
           </div>
           <div className="flex gap-3">

@@ -14,8 +14,8 @@ function Testimonials() {
     <section className="bg-white px-6 py-12 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gold">Client voices</p>
-          <h2 className="mt-3 font-display text-3xl font-bold text-[#1A1208] sm:mt-4 sm:text-5xl">What Our Customers Say</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-gold">Reviews</p>
+          <h2 className="mt-3 font-display text-3xl font-bold text-[#1A1208] sm:mt-4 sm:text-5xl">What Customers Say</h2>
         </div>
 
         <div className="relative overflow-hidden rounded-[28px] bg-cream px-6 py-10 shadow-inner shadow-black/5 sm:rounded-[36px] sm:px-14 sm:py-14 lg:px-20 lg:py-16">

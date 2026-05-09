@@ -53,7 +53,7 @@ function OrderTrackingPage() {
                   value={trackingId}
                   onChange={(event) => setTrackingId(event.target.value)}
                   placeholder="Example: ORD-00001"
-                  className="w-full rounded-2xl border border-black/10 bg-[#fcfaf6] px-4 py-3 text-sm text-[#1A1208] outline-none focus:border-gold"
+                  className="w-full rounded-2xl border border-black/10 bg-[#fcfaf6] px-4 py-3 text-base text-[#1A1208] outline-none focus:border-gold"
                 />
               </label>
 

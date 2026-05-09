@@ -54,8 +54,8 @@ function CustomerAuthPage() {
     <SupportPageLayout>
       <SupportHero
         eyebrow="My Account"
-        title="Create an account or sign in when you want a more personal shopping experience"
-        description="Customer accounts are optional. They help with saved details, faster follow-up, wishlist continuity, and future order history without blocking browsing."
+        title="Sign in or create an account"
+        description="Save your details and track orders. No account needed to browse or buy."
       />
 
       <section className="px-6 py-16 sm:py-20">
@@ -64,15 +64,15 @@ function CustomerAuthPage() {
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#c9a84c]/10 text-[#c9a84c]">
               <LockKeyhole size={24} />
             </div>
-            <h2 className="mt-6 font-display text-4xl">Optional customer access</h2>
-            <p className="mt-4 text-sm leading-7 text-white/70">
-              We are keeping the storefront open and easy to browse. Create an account only if you want a better experience when checking orders, saving details, or returning later.
+            <h2 className="mt-6 font-display text-3xl">Your account</h2>
+            <p className="mt-3 text-sm leading-7 text-white/60">
+              Accounts are optional — browse and order freely without one.
             </p>
-            <div className="mt-8 space-y-3 text-sm leading-7 text-white/70">
-              <p>Save your profile details for future contact</p>
-              <p>Prepare for order history and tracking upgrades</p>
-              <p>Keep your shopping experience more personal over time</p>
-            </div>
+            <ul className="mt-6 space-y-2 text-sm text-white/50">
+              <li>· Saved contact details</li>
+              <li>· Order history</li>
+              <li>· Faster follow-up</li>
+            </ul>
           </div>
 
           <div className="px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
@@ -107,31 +107,31 @@ function CustomerAuthPage() {
               {!isSignIn && (
                 <label className="block">
                   <span className="mb-2 block text-sm font-medium text-[#1A1208]">Full name</span>
-                  <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="name" onChange={handleChange} value={form.name} />
+                  <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-base text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="name" onChange={handleChange} value={form.name} />
                 </label>
               )}
 
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-[#1A1208]">Email</span>
-                <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="email" onChange={handleChange} type="email" value={form.email} />
+                <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-base text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="email" onChange={handleChange} type="email" value={form.email} />
               </label>
 
               {!isSignIn && (
                 <label className="block">
                   <span className="mb-2 block text-sm font-medium text-[#1A1208]">Phone number</span>
-                  <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="phone" onChange={handleChange} value={form.phone} />
+                  <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-base text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="phone" onChange={handleChange} value={form.phone} />
                 </label>
               )}
 
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-[#1A1208]">Password</span>
-                <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="password" onChange={handleChange} type="password" value={form.password} />
+                <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-base text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="password" onChange={handleChange} type="password" value={form.password} />
               </label>
 
               {!isSignIn && (
                 <label className="block">
                   <span className="mb-2 block text-sm font-medium text-[#1A1208]">Confirm password</span>
-                  <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="confirmPassword" onChange={handleChange} type="password" value={form.confirmPassword} />
+                  <input className="w-full rounded-2xl border border-[#dbcba7] bg-[#fcfaf6] px-4 py-3 text-base text-[#1A1208] outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20" name="confirmPassword" onChange={handleChange} type="password" value={form.confirmPassword} />
                 </label>
               )}
 

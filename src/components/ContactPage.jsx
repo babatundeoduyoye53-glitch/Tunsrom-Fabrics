@@ -89,12 +89,12 @@ function ContactPage({ onNavigateHome }) {
           </div>
           <div className="grid gap-3 grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             {contactDetails.map(({ detail, icon: Icon, subtext, title }) => (
-              <div key={title} className="rounded-[24px] border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <div key={title} className="rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold text-white">
                   <Icon size={16} />
                 </div>
                 <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f8d98a]">{title}</p>
-                <p className="mt-2 break-words font-display text-lg font-semibold text-white sm:text-xl">
+                <p className="mt-2 break-all font-display text-base font-semibold text-white sm:text-lg">
                   {detail}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-white/70">{subtext}</p>
@@ -125,7 +125,7 @@ function ContactPage({ onNavigateHome }) {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base outline-none focus:border-gold"
                     placeholder="Your full name"
                   />
                 </label>
@@ -137,7 +137,7 @@ function ContactPage({ onNavigateHome }) {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base outline-none focus:border-gold"
                     placeholder="you@example.com"
                   />
                 </label>
@@ -151,7 +151,7 @@ function ContactPage({ onNavigateHome }) {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base outline-none focus:border-gold"
                     placeholder="+234..."
                   />
                 </label>
@@ -163,7 +163,7 @@ function ContactPage({ onNavigateHome }) {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+                    className="h-13 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base outline-none focus:border-gold"
                     placeholder="What are you looking for?"
                   />
                 </label>
@@ -177,7 +177,7 @@ function ContactPage({ onNavigateHome }) {
                   onChange={handleChange}
                   required
                   rows="6"
-                  className="w-full rounded-[24px] border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+                  className="w-full rounded-[24px] border border-black/10 bg-white px-4 py-3 text-base outline-none focus:border-gold"
                   placeholder="Tell us about the fabric, quantity, colors, or event you are planning for."
                 />
               </label>
