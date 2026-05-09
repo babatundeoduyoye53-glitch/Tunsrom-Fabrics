@@ -93,9 +93,16 @@ function Header({
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    onSearchShop(searchValue);
+    const query = searchValue.trim();
+    if (!query) return;
+    // Release scroll lock before navigating so the new page renders correctly
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
     setIsSearchOpen(false);
     setIsMenuOpen(false);
+    onSearchShop(query);
   };
 
   const getNavState = (item) => {
@@ -374,10 +381,7 @@ function Header({
           onClick={() => setIsSearchOpen(false)}
         >
           <form
-            onSubmit={(event) => {
-              event.stopPropagation();
-              handleSearchSubmit(event);
-            }}
+            onSubmit={handleSearchSubmit}
             onClick={(event) => event.stopPropagation()}
             className="w-full max-w-xl rounded-[32px] bg-white p-6 shadow-2xl shadow-black/30"
           >
